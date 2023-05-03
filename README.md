@@ -2,7 +2,7 @@
 example project to show display scale bug
 
 ## Context
-On PC where the OS display scale is set to >100% or on Apple Retina displays, and if cameras' x are set to >0, the scroll rect for the camera will display incorrectly. This will lead to instances where the camera will get cropped.
+For html5 targets, on PC where the OS display scale is set to >100% or on Apple Retina displays, and when the camera's x value are set to >0, the scroll rect for the camera will display incorrectly. This will lead to instances where the camera will get cropped. This potentially happens due to the browser reporting a smaller width of the game window.
 
 ![game camera is cropped due to display scale](https://github.com/aeveis/haxeflixel-display-scale-fix/blob/main/docs/diacombs_example.png)
 

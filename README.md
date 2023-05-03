@@ -1,5 +1,5 @@
 # haxeflixel-display-scale-fix
-example project to show display scale bug
+example project to show display scale bug. Currently NOT fixed and needs more testing.
 
 ## Context
 For html5 targets, on PC where the OS display scale is set to >100% or on Apple Retina displays, and when the camera's x value are set to >0, the scroll rect for the camera will display incorrectly. This will lead to instances where the camera will get cropped. This potentially happens due to the browser reporting a smaller width of the game window.

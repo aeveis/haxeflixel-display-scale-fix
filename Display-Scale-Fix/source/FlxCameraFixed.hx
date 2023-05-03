@@ -1,5 +1,6 @@
 import flixel.FlxCamera;
 import flixel.FlxG;
+import flixel.math.FlxPoint;
 import openfl.geom.Rectangle;
 
 class FlxCameraFixed extends FlxCamera
@@ -12,23 +13,31 @@ class FlxCameraFixed extends FlxCamera
 		{
 			rect.x = rect.y = 0;
 
-			var offset:Float = 0;
+			var offset:FlxPoint = FlxPoint.get(0, 0);
+
 			#if web
 			if (x > 0)
 			{
-				offset = x / (2.0 * zoom);
+				offset.x = x / zoom;
+			}
+			if (y > 0)
+			{
+				offset.y = y / zoom;
 			}
 			#end
 
-			rect.x -= offset;
+			rect.x -= offset.x;
+			rect.y -= offset.y;
 
-			rect.width = width * initialZoom * FlxG.scaleMode.scale.x + offset;
-			rect.height = height * initialZoom * FlxG.scaleMode.scale.y;
+			rect.width = width * initialZoom * FlxG.scaleMode.scale.x + offset.x;
+			rect.height = height * initialZoom * FlxG.scaleMode.scale.y + offset.y;
 
 			_scrollRect.scrollRect = rect;
 
-			_scrollRect.x = -0.5 * (rect.width + offset);
-			_scrollRect.y = -0.5 * rect.height;
+			_scrollRect.x = -0.5 * (rect.width + offset.x);
+			_scrollRect.y = -0.5 * (rect.height + offset.y);
+
+			offset.put();
 		}
 	}
 }
